@@ -1,5 +1,7 @@
 {
   "name": "frontend-mobile",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

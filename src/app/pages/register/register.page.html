@@ -1,0 +1,39 @@
+<ion-header>
+</ion-header>
+
+<ion-content>
+    <div class="header">
+        <h1>Register</h1>
+        <p>Please fill in this form to create an account.</p>
+    </div>
+    <div class="container">
+        
+        <label for="name"><b>Name</b></label>
+        <ion-input [(ngModel)]="name" type="text" placeholder="Enter Full Name" id="name" required></ion-input>
+
+        <label for="email"><b>Email</b></label>
+        <ion-input [(ngModel)]="email" type="text" placeholder="Enter Email" id="email" required></ion-input>
+    
+        <label for="password"><b>Password</b></label>
+        <ion-input [(ngModel)]="password" type="password" placeholder="Enter Password" id="password" required></ion-input>
+    
+        <label for="srcode"><b>SR-CODE</b></label>
+        <ion-input [(ngModel)]="srcode" type="text" placeholder="Enter SR-code" id="srcode" required></ion-input>
+
+        <label for="department"><b>Department</b></label>
+        <ion-input [(ngModel)]="deptName" type="text" placeholder="Enter Department" id="deptName" required></ion-input>
+
+        <label for="program"><b>Program</b></label>
+        <ion-input [(ngModel)]="progName" type="text" placeholder="Enter Program" id="progName" required></ion-input>
+
+        <ion-label style="color: black;margin-bottom: 12px;">Are you an admin?</ion-label>
+        <ion-checkbox [(ngModel)]="isAdmin" aria-checked="true"></ion-checkbox>
+    
+        <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+        <button type="submit" class="registerbtn" (click)="register()">Register</button>
+    </div>
+    
+    <div class="container signin">
+        <p>Already have an account? <a href="#" [routerLink]="['/login']">Sign in</a>.</p>
+    </div>
+</ion-content>

@@ -1,0 +1,103 @@
+<ion-header>
+</ion-header>
+
+<ion-content>
+  <nav class="navitab">
+    <div class ="maxwidth">
+      <div class ="logo"><img src="../../assets/imgs/BatStateU-NEU-Logo.png">
+      <img src="../../../assets/imgs/frmn logo 2.png" alt="">
+      </div>
+      <div class="logo2">
+        <a href="#" [routerLink]="['/forms']">FORMANA</a>
+        <a href="#" [routerLink]="['/login']">LOGOUT</a>
+      </div>
+    </div>
+  </nav>
+  <div class="welcomeText">
+    <div class="text">
+      Form
+    </div>
+  </div>
+  <div class="formCreate">
+    <button id="open-modal" type="button" style="background-color: rgb(202, 36, 36)
+      ; height: 60px; width: 65%; border-radius: 20px; margin: 20px;">SELECT FORM TO ANSWER</button>
+      <ion-modal trigger="open-modal">
+        <ng-template>
+          <ion-content class="ion-padding">
+            <ion-item>
+              <ion-label position="stacked" style="font-size: 25px; font-family:'Times New Roman', sans-serif">Answer Form?</ion-label>
+            </ion-item>
+            <label for="wtitle" style="padding-top: 10px;">Title</label><br>
+            <ion-input [(ngModel)]="wtitle" type="text" placeholder="Enter your wanter form title" id="wtitle"
+            style="background-color: rgb(184, 184, 184);"></ion-input>
+            <div class="ion-activatable ripple-parent rectangle" style="border: none;">
+              <button type="button" (click)="findTitle()" style="background-color: rgb(70, 70, 234);
+              border-radius: 35px; width: 100%; height: 47px; margin-top: 25px;">
+              Find<ion-ripple-effect></ion-ripple-effect></button>
+            </div>
+            <div class="ion-activatable ripple-parent rectangle" style="border: none;">
+              <button type="button" (click)="myGeeks()" style="background-color: rgb(70, 70, 234);
+              border-radius: 35px; width: 100%; height: 47px; margin-top: 25px;">
+              Answer<ion-ripple-effect></ion-ripple-effect></button>
+            </div>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()" #f="ngForm">
+      <div class="form-group">
+        <label for="title" style="color: black;">Form Title <span> by </span></label><br>
+        <label id="GFG" for="title2" style="color: black; font-size: 25px;"></label>
+      </div>
+      <div formArrayName="questions">
+        <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let question of myForm.get('questions')['controls']; let i=index">
+          <fieldset>
+            <legend><h4 style="color: black;">Question {{i+1}}:
+            </h4></legend>
+            <div [formGroupName]="i">
+              <div class="form-inline">
+                <div class="form-group">
+                  <label id="questionLbl" style="margin-right:80px;" style="color: black;"class="col-form-label" for="question">Question</label>
+                  <input type="text" formControlName="question"
+                              class="form-control"
+                              style="margin-right:5px; width: 80%;" 
+                              type="email"
+                              placeholder="Question"
+                              id="question"
+                              name="question"
+                                readonly>
+                </div>
+              </div>
+              <div class="form-inline">
+                <div class="form-group">
+                  <div formArrayName="comments">
+                    <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let lines of question.get('comments').controls; let j=index">
+                      <div [formGroupName]="j">
+                        <div class="form-group">
+                        <label id="commentLbl" style="color: black;" style="margin-right:5px;" class="col-form-label" for="emailId" style="color: black;">Answer {{j + 1}}</label><br>
+                        <input type="text" formControlName="comment"
+                              class="form-control"
+                              style="margin-right:5px; width: 40%;" 
+                              type="email"
+                              placeholder="Answers"
+                              id="comment"
+                              name="comment"
+                                />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+
+      
+      <!--<button type="submit" class="btn btn-success" (click)="continue()">Update</button>-->
+      <button type="submit" class="btn btn-success" (click)="pass()">Submit</button>
+    </form>
+
+     <pre>{{myForm.value | json}}</pre>
+  </div>
+</ion-content>

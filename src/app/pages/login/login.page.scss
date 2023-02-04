@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+ion-content{
+    --background: #fff url("../../../assets/imgs/bsu background.png") no-repeat center center/cover;
+    font-family: 'Archivo Black', sans-serif;
+}
+.login {
+    font-size: 15px;
+    font-weight: 500;
+    justify-content: space-between;
+    margin: auto;
+}
+.login .left {
+    font-size: 60px;
+    float: left;
+    text-align: center;
+    width: 50%;
+    height: 100vh;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: rgba(158,0,0,255);
+}
+.login .left img{
+    height: 435px; width: 310px;
+    padding-top: 12vh;
+    padding-bottom: 0px;
+}
+.login .left .text {
+    font-style: normal;
+    padding-top: 0px;
+    color: #ffffff;
+}
+.login .right {
+    font-family: 'Arial', sans-serif;
+    float: right;
+    width: 50%;
+    height: 100vh;
+}
+.login .right .rectangle {
+    border-radius: 25px;
+    background: rgba(158,0,0,255);
+    padding: 20px;
+    margin: 20vh;
+    width: 425px;
+    height: 69vh; 
+    position: relative;
+}
+.login .right .rectangle .text{
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 500;
+    text-shadow: #000000 2px 2px;
+    color: #fff;
+}
+.login .right .rectangle .login_info ion-input{
+    color: #000000;
+    text-align: left;
+    border: #ffffff;
+    background-color: #ffffff;
+    border-radius:25px;
+    -moz-border-radius:25px;
+    -webkit-border-radius:25px;
+    width: 290px;
+    height: 45px;
+    margin-left: 45px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    text-indent: 12px;
+}
+.login .right .rectangle .login_info label{
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    margin-left: 55px;
+    position: relative;
+    font-weight: 500;
+    color: #fff;
+}
+.login .right .rectangle a {
+    text-decoration: none;
+    color: #fff;
+    margin-left: 55px;
+}
+.login .right .rectangle .submit button {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    color: black;
+    border-radius:25px;
+    -moz-border-radius:25px;
+    -webkit-border-radius:25px;
+    width: 180px;
+    height: 45px;
+    margin: 20px; margin-left: 101px;
+}
+.login .right .rectangle .submit button:hover {
+    background-color: rgb(97, 5, 5);
+    color: white;
+    transition: all 0.3s ease;
+}
+.login .right .rectangle a:hover {
+    color: rgb(97, 5, 5);
+}
+@media (max-width: 400px) {
+    .login .left {
+        width: 100%;
+        height: 35%;
+        font-size: 15px;
+        float: none;
+        border-radius: 0px;
+        background: none;
+    }
+    .login .left img {
+        height: 160px;
+        width: 80px;
+        margin-top: 55px; margin-left: 30px;
+        float: left;
+    }
+    .login .left .text {
+        margin-top: 127px;
+        font-size: 38px;
+        padding-bottom: 10px;
+        color: rgba(158,0,0,255);
+    }
+    .login .right {
+        width: 100%; height: 65%;
+        float: none;
+    }
+    .login .right .rectangle {
+        margin: 0;
+        width: 362px;
+        margin-top: 20px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+    .login .right .rectangle .login_info ion-input {
+        margin-left: 13px;
+    }
+    .login .right .rectangle .login_info label {
+        margin-left: 13px;
+    }
+    .login .right .rectangle .submit button {
+        margin-left: 20%;
+    }
+    .login .right .rectangle a {
+        margin-left: 10%;
+    }
+}

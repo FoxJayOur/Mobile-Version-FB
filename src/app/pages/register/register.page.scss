@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+    margin-top: 0;
+}
+
+/* Add padding to containers */
+ion-content {
+    --background: rgb(255, 255, 255);
+}
+
+.container {
+  padding: 16px;
+}
+
+.container label, h1, p {
+    color: black;
+}
+
+.header {
+    text-align: center; height: 12vh;
+    background-color: rgba(158,0,0,255);
+}
+.header h1 {
+    padding-top: 15px;
+}
+
+/* Full-width input fields */
+ion-input[type=text], ion-input[type=password] {
+  color: rgba(158, 0, 0, 255);
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #ededed;
+}
+
+ion-input[type=text]:focus, ion-input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit/register button */
+.registerbtn {
+  background-color: rgba(158,0,0,255);
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity:1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #ffffff;
+  text-align: center;
+}

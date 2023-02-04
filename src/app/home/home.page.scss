@@ -1,27 +1,34 @@
-#container {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@200&family=Yellowtail&display=swap');
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+ion-content {
+    --background: rgba(158,0,0,255);
+    font-family: 'Poppins', sans-serif;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.home img {
+    height: 335px; width: 210px;
+    padding-top: 12vh;
+    padding-bottom: 0px;
+    margin-left: 20%;
 }
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+.home .text {
+    font-style:normal;
+    font-weight: 600;
+    font-size: 40px;
+    margin-left: 25%;
+    padding-top: 0px;
+    color: #ffffff;
 }
-
-#container a {
-  text-decoration: none;
+.button a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 12px; margin-left: 11%;
+}
+.button {
+    background-color: rgb(213, 0, 0);
+    border-radius: 5px;
+    padding: 2px;
+    width: 150px;
+    margin-left: 29%;
 }

@@ -1,0 +1,28 @@
+<ion-header>
+</ion-header>
+
+<ion-content>
+  <div class="login">
+    <div class="column left">
+        <img src="../../../assets/imgs/frmn logo 2.png"><br>
+        <div class="text">FORMANA</div>
+    </div>
+    <div class="column right">
+        <div class="rectangle">
+            <div class="text">
+                <p>Welcome Back!</p>
+            </div>
+            <div class="login_info">
+                <label for="email">Email</label><br>
+                <ion-input [(ngModel)]="email" type="text" placeholder="Enter your email address" id="email"></ion-input><br>
+                <label for="password">Password</label><br>
+                <ion-input [(ngModel)]="password" type="password" placeholder="Enter your password" id="password"></ion-input>
+            </div>
+            <a href="#" [routerLink]="['/register']">Don't have an account? Sign up here!</a>
+            <div class="submit">
+                <button type="submit" (click)="login()">LOG IN</button>
+            </div>
+        </div>
+    </div>
+  </div>
+</ion-content>
