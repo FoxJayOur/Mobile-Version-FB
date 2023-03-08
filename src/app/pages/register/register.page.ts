@@ -38,7 +38,7 @@ export class RegisterPage implements OnInit {
         }
       }
     }
-    this.http.post('http://192.168.1.9:8080/api/formanaAuth/register', user)
+    this.http.post('http://localhost:8080/api/formanaAuth/register', user)
     .subscribe(res =>{
       localStorage.setItem('user', JSON.stringify(res))
       this.router.navigateByUrl('/login', {replaceUrl: true})
