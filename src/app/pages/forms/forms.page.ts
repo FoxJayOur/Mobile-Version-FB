@@ -10,15 +10,41 @@ import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 })
 export class FormsPage implements OnInit {
 
-  title: string = ""
-  wtitle: string = ""
-  TTitle: string = ""
-  bodyTrial: string = ""
-  question: string = ""
-  comment: string = ""
+  title: string
+  wtitle: string
+  TTitle: string
+  bodyTrial: string
+  question: string
+  comment: string
+  changed: string
 
   data = {
     questions: [
+      {
+        question: "",
+        comments: [
+          {
+            comment: "",
+          }
+        ]
+      }
+    ],
+    questions2: [
+      {
+        question: "",
+        comments: [
+          {
+            comment: "",
+          }
+        ],
+        comments2: [
+          {
+            comment: "",
+          }
+        ]
+      }
+    ],
+    questions3: [
       {
         question: "",
         comments: [
@@ -35,7 +61,9 @@ export class FormsPage implements OnInit {
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
     this.myForm = this.fb.group({
       title: [''],
-      questions: this.fb.array([])
+      questions: this.fb.array([]),
+      questions2: this.fb.array([]),
+      questions3: this.fb.array([])
     })
   }
 
@@ -86,9 +114,12 @@ export class FormsPage implements OnInit {
   }
   myGeeks() {
     this.findTitle()
-    document.getElementById('GFG')!.innerHTML
+    document.getElementById('GFG').innerHTML
         = this.TTitle;
     this.setQuestions()
+    this.setQuestions3()
+    this.setQuestions4()
+    console.log(this.data.questions2[0].comments[0].comment)
   }
 
   addNewQuestion() {
@@ -125,6 +156,23 @@ export class FormsPage implements OnInit {
         comments: this.setComments(x) }))
     })
   }
+  setQuestions3() {
+    let control = <FormArray>this.myForm.controls.questions2;
+    this.data.questions2.forEach(x => {
+      control.push(this.fb.group({ 
+        question: x.question,
+        comments: this.setComments(x),
+        comments2: this.setComments2(x) }))
+    })
+  }
+  setQuestions4() {
+    let control = <FormArray>this.myForm.controls.questions3;
+    this.data.questions3.forEach(x => {
+      control.push(this.fb.group({ 
+        question: x.question,
+        comments: this.setComments(x) }))
+    })
+  }
 
   setQuestions2() {
     let creds3 = {
@@ -147,7 +195,26 @@ export class FormsPage implements OnInit {
     })
   }
 
-  setComments(x: any) {
+  setComments(x) {
+    let arr = new FormArray([])
+    x.comments.forEach(y => {
+      arr.push(this.fb.group({ 
+        comment: y.comment 
+      }))
+    })
+    return arr;
+  }
+
+  setComments2(x) {
+    let arr = new FormArray([])
+    x.comments2.forEach(y => {
+      arr.push(this.fb.group({ 
+        comment: y.comment 
+      }))
+    })
+    return arr;
+  }
+  setComments3(x) {
     let arr = new FormArray([])
     x.comments.forEach(y => {
       arr.push(this.fb.group({ 
@@ -161,13 +228,12 @@ export class FormsPage implements OnInit {
   }
 
   continue() {
-    /*
     for (let i = 0; i < this.data.questions.length; i++) {
       for (let p = 0; i < this.data.questions[i].comments.length; i++) {
-      document.getElementById('questionLbl').innerHTML
+      /*document.getElementById('questionLbl').innerHTML
           = this.data.questions[i].question;
       document.getElementById('commentLbl').innerHTML
-          = this.data.questions[i].comments[0].comment;
+          = this.data.questions[i].comments[0].comment;*/
       document.getElementById('comments"{{p*2}}"').setAttribute('type', 
       this.data.questions[i].comments[p*2].comment);
 
@@ -175,16 +241,15 @@ export class FormsPage implements OnInit {
       this.data.questions[i].comments[p*2+1].comment);
       }
     }
-    */
   }
 
   pass(){
     console.log(this.myForm.value)
     const userData = this.myForm.value
-    this.http.post('http://192.168.1.9:8080/api/formanaAuth/answer', userData)
+    this.http.post('http://localhost:8080/api/formanaAuth/answer', userData)
     .subscribe(res =>{
       localStorage.setItem('data', JSON.stringify(res))
-      this.router.navigateByUrl('/forms', {replaceUrl: true})
+      this.router.navigateByUrl('/dashboard', {replaceUrl: true})
       console.log(res)
     }, error =>{
       console.log(error)
@@ -194,3 +259,35 @@ export class FormsPage implements OnInit {
 
 
 }
+const textarea = document.querySelector("textarea");
+  if(textarea) {
+    textarea.addEventListener("keyup", e =>{
+      textarea.style.height = "63px";
+      let scHeight = (e.target as HTMLInputElement).scrollHeight;
+      textarea.style.height = `${scHeight}px`;
+    });
+  }
+const textarea2 = document.querySelector("question");
+  if(textarea2) {
+    textarea.addEventListener("keyup", e =>{
+      textarea.style.height = "63px";
+      let scHeight = (e.target as HTMLInputElement).scrollHeight;
+      textarea.style.height = `${scHeight}px`;
+    });
+  }
+const textarea3 = document.querySelector("question2");
+  if(textarea3) {
+    textarea.addEventListener("keyup", e =>{
+      textarea.style.height = "63px";
+      let scHeight = (e.target as HTMLInputElement).scrollHeight;
+      textarea.style.height = `${scHeight}px`;
+    });
+  }
+const textarea4 = document.querySelector("question3");
+  if(textarea4) {
+    textarea.addEventListener("keyup", e =>{
+      textarea.style.height = "63px";
+      let scHeight = (e.target as HTMLInputElement).scrollHeight;
+      textarea.style.height = `${scHeight}px`;
+    });
+  }
