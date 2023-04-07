@@ -19,34 +19,101 @@
     </div>
   </div>
   <div class="formCreate">
-    <button id="open-modal" type="button" style="background-color: rgb(202, 36, 36)
+    <button id="open-modalOrig" type="button" style="background-color: rgb(202, 36, 36)
     ; height: 60px; width: 65%; border-radius: 20px; margin: 20px;">SELECT FORM</button>
-      <ion-modal trigger="open-modal">
-        <ng-template>
-          <ion-content class="ion-padding">
-            <ion-item>
-              <ion-label position="stacked" style="font-size: 25px; font-family:'Times New Roman', sans-serif">Answer Form?</ion-label>
-            </ion-item>
-            <label for="wtitle" style="padding-top: 10px;">Title</label><br>
-            <ion-input [(ngModel)]="wtitle" type="text" placeholder="Enter your wanter form title" id="wtitle"
-            style="background-color: rgb(184, 184, 184);"></ion-input>
-            <div class="ion-activatable ripple-parent rectangle" style="border: none;">
-              <button type="button" (click)="findTitle()" style="background-color: rgb(70, 70, 234);
-              border-radius: 35px; width: 100%; height: 47px; margin-top: 25px;">
-              Find<ion-ripple-effect></ion-ripple-effect></button>
+      <ion-modal trigger="open-modalOrig">
+          <ng-template>
+            <ion-content class="ion-padding">
+            <div class="titleLabel" style="background: rgb(214, 213, 213); padding: 18px; margin-bottom: 80px; border-radius: 10px; text-align: center;">
+              <ion-label style="font-size: 25px; font-family:'Poppins', sans-serif; color: black;">CHOOSE BUILDING DESIGNATION</ion-label>
             </div>
-            <div class="ion-activatable ripple-parent rectangle" style="border: none;">
-              <button type="button" (click)="myGeeks()" style="background-color: rgb(70, 70, 234);
-              border-radius: 35px; width: 100%; height: 47px; margin-top: 25px;">
-              Answer<ion-ripple-effect></ion-ripple-effect></button>
-            </div>
-          </ion-content>
-        </ng-template>
-      </ion-modal>
+            <button id="open-modal" type="button" style="background-color: rgb(202, 36, 36)
+              ; height: 60px; width: 93%; border-radius: 20px; margin: 20px;">CICS Building</button>
+              <ion-modal trigger="open-modal">
+                <ng-template>
+                  <ion-content class="ion-padding">
+                    <div class="titleLabel" style="background: rgb(214, 213, 213); padding: 18px; margin-bottom: 10px; border-radius: 10px; text-align: center;">
+                      <ion-label style="font-size: 25px; font-family:'Poppins', sans-serif; color: black;">SELECT FORM</ion-label>
+                    </div>
+                    <label for="wtitle" style="padding-top: 10px;">Title</label><br>
+                    <ion-input [(ngModel)]="wtitle" type="text" placeholder="Enter your wanted form title" id="wtitle"
+                    style="background-color: rgb(184, 184, 184); border-radius: 7px;"></ion-input>
+                    <div class="ion-activatable ripple-parent rectangle" style="border: none;">
+                      <button type="button" (click)="findTitle()" style="background-color: rgb(202, 36, 36);
+                      border-radius: 35px; width: 100%; height: 47px; margin-top: 25px;">
+                      Find<ion-ripple-effect></ion-ripple-effect></button>
+                    </div>
+                    <div class="ion-activatable ripple-parent rectangle" style="border: none;">
+                      <button type="button" (click)="myGeeks()" style="background-color: rgb(202, 36, 36);
+                      border-radius: 35px; width: 100%; height: 47px; margin-top: 25px;">
+                      Answer<ion-ripple-effect></ion-ripple-effect></button>
+                    </div>
+                  </ion-content>
+                </ng-template>
+              </ion-modal>
+            <button id="open-modal2" type="button" style="background-color: rgb(202, 36, 36)
+              ; height: 60px; width: 93%; border-radius: 20px; margin: 20px;">CEAFA Building</button>
+              <ion-modal trigger="open-modal2">
+                <ng-template>
+                  <ion-content class="ion-padding">
+                    <div class="titleLabel" style="background: rgb(214, 213, 213); padding: 18px; margin-bottom: 10px; border-radius: 10px; text-align: center;">
+                      <ion-label style="font-size: 25px; font-family:'Poppins', sans-serif; color: black;">SELECT FORM</ion-label>
+                    </div>
+                    <label for="wtitle" style="padding-top: 10px;">Title</label><br>
+                    <ion-input [(ngModel)]="wtitle" type="text" placeholder="Enter your wanted form title" id="wtitle"
+                    style="background-color: rgb(184, 184, 184); border-radius: 7px;"></ion-input>
+                    <div class="ion-activatable ripple-parent rectangle" style="border: none;">
+                      <button type="button" (click)="findTitle2()" style="background-color: rgb(202, 36, 36);
+                      border-radius: 35px; width: 100%; height: 47px; margin-top: 25px;">
+                      Find<ion-ripple-effect></ion-ripple-effect></button>
+                    </div>
+                    <div class="ion-activatable ripple-parent rectangle" style="border: none;">
+                      <button type="button" (click)="myGeeks2()" style="background-color: rgb(202, 36, 36);
+                      border-radius: 35px; width: 100%; height: 47px; margin-top: 25px;">
+                      Answer<ion-ripple-effect></ion-ripple-effect></button>
+                    </div>
+                  </ion-content>
+                </ng-template>
+              </ion-modal>
+            <button id="open-modal3" type="button" style="background-color: rgb(202, 36, 36)
+              ; height: 60px; width: 93%; border-radius: 20px; margin: 20px;">Faculty</button>
+              <ion-modal trigger="open-modal3">
+                <ng-template>
+                  <ion-content class="ion-padding">
+                    <div class="titleLabel" style="background: rgb(214, 213, 213); padding: 18px; margin-bottom: 10px; border-radius: 10px; text-align: center;">
+                      <ion-label style="font-size: 25px; font-family:'Poppins', sans-serif; color: black;">SELECT FORM</ion-label>
+                    </div>
+                    <label for="wtitle" style="padding-top: 10px;">Title</label><br>
+                    <ion-input [(ngModel)]="wtitle" type="text" placeholder="Enter your wanted form title" id="wtitle"
+                    style="background-color: rgb(184, 184, 184); border-radius: 7px;"></ion-input>
+                    <div class="ion-activatable ripple-parent rectangle" style="border: none;">
+                      <button type="button" (click)="findTitle3()" style="background-color: rgb(202, 36, 36);
+                      border-radius: 35px; width: 100%; height: 47px; margin-top: 25px;">
+                      Find<ion-ripple-effect></ion-ripple-effect></button>
+                    </div>
+                    <div class="ion-activatable ripple-parent rectangle" style="border: none;">
+                      <button type="button" (click)="myGeeks3()" style="background-color: rgb(202, 36, 36);
+                      border-radius: 35px; width: 100%; height: 47px; margin-top: 25px;">
+                      Answer<ion-ripple-effect></ion-ripple-effect></button>
+                    </div>
+                  </ion-content>
+                </ng-template>
+              </ion-modal>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
     <form [formGroup]="myForm" (ngSubmit)="onSubmit()" #f="ngForm">
       <div class="form-group">
         <label for="title" style="color: black;">Form Title <span> by </span></label><br>
-        <label id="GFG" for="title2" style="color: black; font-size: 25px;"></label>
+        <input type="text"
+              id="title"
+              class="form-control"
+              placeholder="Title"
+              name="title"
+              formControlName="title"
+              style="width: 40%;"
+              required
+              readonly>
       </div>
       <div formArrayName="questions">
         <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let question of myForm.get('questions')['controls']; let i=index">
