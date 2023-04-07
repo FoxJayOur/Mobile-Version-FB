@@ -115,6 +115,10 @@
               required
               readonly>
       </div>
+      <div class="form-group">
+        <label for="description" style="color: black;">Form Description</label>
+        <label for="" id="description" style="color: black; width: 85%;"></label>
+      </div>
       <div formArrayName="questions">
         <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let question of myForm.get('questions')['controls']; let i=index">
           <fieldset>

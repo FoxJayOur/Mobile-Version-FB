@@ -22,6 +22,7 @@ export class FormsPage implements OnInit {
   nullz: object
   expiryDate: Date
   bodyT: JSON
+  description: String
 
   data = {
     questions: [
@@ -102,8 +103,11 @@ export class FormsPage implements OnInit {
       this.data = JSON.parse(this.bodyTrial)
       type ObjectKey = keyof typeof this.bodyTrial;
       const Key = 'expiryDate' as ObjectKey
+      const KeyD = 'description' as ObjectKey
       console.log(Key)
       this.expiryDate = new Date(res[Key])
+      this.description = res[KeyD]
+      console.log(this.description)
       console.log(this.expiryDate)
       console.log(this.data.questions[0].question)
     }, error => {
@@ -133,8 +137,11 @@ export class FormsPage implements OnInit {
       this.data = JSON.parse(this.bodyTrial)
       type ObjectKey = keyof typeof this.bodyTrial;
       const Key = 'expiryDate' as ObjectKey
+      const KeyD = 'description' as ObjectKey
       console.log(Key)
       this.expiryDate = new Date(res[Key])
+      this.description = res[KeyD]
+      console.log(this.description)
       console.log(this.expiryDate)
       console.log(this.data.questions[0].question)
     }, error => {
@@ -164,8 +171,11 @@ export class FormsPage implements OnInit {
       this.data = JSON.parse(this.bodyTrial)
       type ObjectKey = keyof typeof this.bodyTrial;
       const Key = 'expiryDate' as ObjectKey
+      const KeyD = 'description' as ObjectKey
       console.log(Key)
       this.expiryDate = new Date(res[Key])
+      this.description = res[KeyD]
+      console.log(this.description)
       console.log(this.expiryDate)
       console.log(this.data.questions[0].question)
     }, error => {
@@ -197,6 +207,8 @@ export class FormsPage implements OnInit {
     this.findTitle();
     (<HTMLInputElement>document.getElementById('title')).value
         = this.TTitle;
+    document.getElementById('description').innerHTML
+        = this.description.toString();
     this.setQuestions()
     this.setQuestions3()
     this.setQuestions4()
@@ -209,6 +221,8 @@ export class FormsPage implements OnInit {
     this.findTitle2();
     (<HTMLInputElement>document.getElementById('title')).value
         = this.TTitle;
+    document.getElementById('description').innerHTML
+        = this.description.toString();
     this.setQuestions()
     this.setQuestions3()
     this.setQuestions4()
@@ -221,6 +235,8 @@ export class FormsPage implements OnInit {
     this.findTitle3();
     (<HTMLInputElement>document.getElementById('title')).value
         = this.TTitle;
+    document.getElementById('description').innerHTML
+        = this.description.toString();
     this.setQuestions()
     this.setQuestions3()
     this.setQuestions4()
