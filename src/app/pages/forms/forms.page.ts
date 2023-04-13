@@ -23,6 +23,7 @@ export class FormsPage implements OnInit {
   expiryDate: Date
   bodyT: JSON
   description: String
+  approvedBy: String
 
   data = {
     questions: [
@@ -104,9 +105,11 @@ export class FormsPage implements OnInit {
       type ObjectKey = keyof typeof this.bodyTrial;
       const Key = 'expiryDate' as ObjectKey
       const KeyD = 'description' as ObjectKey
+      const KeyA = 'approvedBy' as ObjectKey
       console.log(Key)
       this.expiryDate = new Date(res[Key])
       this.description = res[KeyD]
+      this.approvedBy = res[KeyA]
       console.log(this.description)
       console.log(this.expiryDate)
       console.log(this.data.questions[0].question)
@@ -138,9 +141,11 @@ export class FormsPage implements OnInit {
       type ObjectKey = keyof typeof this.bodyTrial;
       const Key = 'expiryDate' as ObjectKey
       const KeyD = 'description' as ObjectKey
+      const KeyA = 'approvedBy' as ObjectKey
       console.log(Key)
       this.expiryDate = new Date(res[Key])
       this.description = res[KeyD]
+      this.approvedBy = res[KeyA]
       console.log(this.description)
       console.log(this.expiryDate)
       console.log(this.data.questions[0].question)
@@ -172,9 +177,11 @@ export class FormsPage implements OnInit {
       type ObjectKey = keyof typeof this.bodyTrial;
       const Key = 'expiryDate' as ObjectKey
       const KeyD = 'description' as ObjectKey
+      const KeyA = 'approvedBy' as ObjectKey
       console.log(Key)
       this.expiryDate = new Date(res[Key])
       this.description = res[KeyD]
+      this.approvedBy = res[KeyA]
       console.log(this.description)
       console.log(this.expiryDate)
       console.log(this.data.questions[0].question)
@@ -209,6 +216,8 @@ export class FormsPage implements OnInit {
         = this.TTitle;
     document.getElementById('description').innerHTML
         = this.description.toString();
+    document.getElementById('approvedBy').innerHTML
+        = this.approvedBy.toString();
     this.setQuestions()
     this.setQuestions3()
     this.setQuestions4()
@@ -223,6 +232,8 @@ export class FormsPage implements OnInit {
         = this.TTitle;
     document.getElementById('description').innerHTML
         = this.description.toString();
+    document.getElementById('approvedBy').innerHTML
+        = this.approvedBy.toString();
     this.setQuestions()
     this.setQuestions3()
     this.setQuestions4()
@@ -237,6 +248,8 @@ export class FormsPage implements OnInit {
         = this.TTitle;
     document.getElementById('description').innerHTML
         = this.description.toString();
+    document.getElementById('approvedBy').innerHTML
+        = this.approvedBy.toString();
     this.setQuestions()
     this.setQuestions3()
     this.setQuestions4()
