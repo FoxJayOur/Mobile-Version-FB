@@ -66,6 +66,17 @@ hr {
 a {
   color: dodgerblue;
 }
+.otpButton {
+  background-color: rgba(158,0,0,255);
+  color: white;
+  padding: 8px 10px;
+  margin: 5px 0;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  width: 100px;
+  opacity: 0.9;
+}
 
 /* Set a grey background color and center the text of the "sign in" section */
 .signin {

@@ -25,10 +25,12 @@
 
         <label for="program"><b>Program</b></label>
         <ion-input [(ngModel)]="progName" type="text" placeholder="Enter Program" id="progName" required></ion-input>
-
-        <ion-label style="color: black;margin-bottom: 12px;">Are you an admin?</ion-label>
-        <ion-checkbox [(ngModel)]="isAdmin" aria-checked="true"></ion-checkbox>
     
+        <label for="code"><b>OTP</b></label>
+        <ion-input [(ngModel)]="code" type="text" placeholder="Enter OTP Code" id="code" required></ion-input>
+        <button type="button" class="otpButton" onclick="this.classList.toggle('button--loading')" (click)="getOTP()">Get OTP</button><br>
+        <button type="button" class="otpButton" onclick="this.classList.toggle('button--loading')" (click)="verifyOTP()">Verify</button>
+
         <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
         <button type="submit" class="registerbtn" (click)="register()">Register</button>
     </div>
