@@ -38,7 +38,7 @@ export class RegisterPage implements OnInit {
       email: this.email
     }
 
-    this.http.post('http://localhost:8080/api/formanaAuth/formNotif', body).subscribe(res =>{
+    this.http.post('https://formana.azurewebsites.net//api/formanaAuth/formNotif', body).subscribe(res =>{
       localStorage.setItem('OTPVerify', JSON.stringify(res))
       console.log(res)
       this.bodyTrial = JSON.stringify(res)
@@ -69,7 +69,7 @@ export class RegisterPage implements OnInit {
       otp: this.code
     }
 
-    this.http.post('http://localhost:8080/api/formanaAuth/verifyOTP', body).subscribe(res =>{
+    this.http.post('https://formana.azurewebsites.net//api/formanaAuth/verifyOTP', body).subscribe(res =>{
       localStorage.setItem('OTPVerify', JSON.stringify(res))
       console.log(res)
       this.bodyTrial = JSON.stringify(res)
@@ -108,7 +108,7 @@ export class RegisterPage implements OnInit {
       }
     }
     if (this.stats == true) {
-      this.http.post('http://localhost:8080/api/formanaAuth/register', user)
+      this.http.post('https://formana.azurewebsites.net//api/formanaAuth/register', user)
       .subscribe(res =>{
         localStorage.setItem('user', JSON.stringify(res))
         this.router.navigateByUrl('/login', {replaceUrl: true})

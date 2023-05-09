@@ -80,7 +80,7 @@ export class FormsPage implements OnInit {
   }
 
   viewForms() {
-    this.http.get('http://localhost:8080/api/formanaAuth/ListOfForms')
+    this.http.get('https://formana.azurewebsites.net/api/formanaAuth/ListOfForms')
     .subscribe(req =>{
       localStorage.getItem('data')
       console.log(req)
@@ -94,7 +94,7 @@ export class FormsPage implements OnInit {
       wtitle: this.wtitle
     }
 
-    this.http.post('http://localhost:8080/api/formanaAuth/title', titleCreds)
+    this.http.post('https://formana.azurewebsites.net//api/formanaAuth/title', titleCreds)
     .subscribe(res => {
       localStorage.setItem('data', JSON.stringify(res))
       console.log(res)
@@ -130,7 +130,7 @@ export class FormsPage implements OnInit {
       wtitle: this.wtitle
     }
 
-    this.http.post('http://localhost:8080/api/formanaAuth/title2', titleCreds)
+    this.http.post('https://formana.azurewebsites.net//api/formanaAuth/title2', titleCreds)
     .subscribe(res => {
       localStorage.setItem('data2', JSON.stringify(res))
       console.log(res)
@@ -166,7 +166,7 @@ export class FormsPage implements OnInit {
       wtitle: this.wtitle
     }
 
-    this.http.post('http://localhost:8080/api/formanaAuth/title3', titleCreds)
+    this.http.post('https://formana.azurewebsites.net/api/formanaAuth/title3', titleCreds)
     .subscribe(res => {
       localStorage.setItem('data3', JSON.stringify(res))
       console.log(res)
@@ -199,7 +199,7 @@ export class FormsPage implements OnInit {
   }
   viewTitle(): string {
 
-    this.http.get('http://localhost:8080/api/formanaAuth/title')
+    this.http.get('https://formana.azurewebsites.net/api/formanaAuth/title')
     .subscribe(req =>{
       localStorage.getItem('data')
       this.title = req.toString()
@@ -316,7 +316,7 @@ export class FormsPage implements OnInit {
       TTitle: this.TTitle
     }
 
-    this.http.post('http://localhost:8080/api/formanaAuth/title', creds3)
+    this.http.post('https://formana.azurewebsites.net/api/formanaAuth/title', creds3)
     .subscribe(res => {
       localStorage.setItem('data', JSON.stringify(res))
       console.log(res)
@@ -392,7 +392,7 @@ export class FormsPage implements OnInit {
     }
     else {
       if (this.building == 0) {
-        this.http.post('http://localhost:8080/api/formanaAuth/answer', userData)
+        this.http.post('https://formana.azurewebsites.net/api/formanaAuth/answer', userData)
         .subscribe(res =>{
           localStorage.setItem('data', JSON.stringify(res))
           this.router.navigateByUrl('/dashboard', {replaceUrl: true})
@@ -402,7 +402,7 @@ export class FormsPage implements OnInit {
         })
       }
       else if (this.building == 1) {
-        this.http.post('http://localhost:8080/api/formanaAuth/answer2', userData)
+        this.http.post('https://formana.azurewebsites.net/api/formanaAuth/answer2', userData)
         .subscribe(res =>{
           localStorage.setItem('data', JSON.stringify(res))
           this.router.navigateByUrl('/dashboard', {replaceUrl: true})
@@ -412,7 +412,7 @@ export class FormsPage implements OnInit {
         })
       }
       else if (this.building == 2) {
-        this.http.post('http://localhost:8080/api/formanaAuth/answer3', userData)
+        this.http.post('https://formana.azurewebsites.net/api/formanaAuth/answer3', userData)
         .subscribe(res =>{
           localStorage.setItem('data', JSON.stringify(res))
           this.router.navigateByUrl('/dashboard', {replaceUrl: true})
