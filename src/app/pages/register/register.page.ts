@@ -56,7 +56,7 @@ export class RegisterPage implements OnInit {
       console.log(error)
       this.presentAlert('Register Failed', 'Wrong information filled out')
     })
-    await new Promise(f => setTimeout(f, 2000));
+    await new Promise(f => setTimeout(f, 4000));
     this.presentAlert('OTP STATUS', (this.status + ": " + this.message))
     console.log("getOTP RAN")
     console.log(body)
@@ -114,6 +114,7 @@ export class RegisterPage implements OnInit {
         localStorage.setItem('user2', JSON.stringify(res))
         this.router.navigateByUrl('/login', {replaceUrl: true})
         console.log(res)
+        this.presentAlert('Register Success', 'Account has been created')
       }, error =>{
         console.log(error)
         this.presentAlert('Register Failed', 'Account Info Error')
@@ -123,7 +124,6 @@ export class RegisterPage implements OnInit {
       console.log(this.stats)
       this.presentAlert('Register Failed', 'Email not verified')
     }
-
     console.log(user)
   }
   async presentAlert(header: string, message: string) {
