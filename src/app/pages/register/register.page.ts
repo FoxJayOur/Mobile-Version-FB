@@ -31,7 +31,7 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
   }
 
-  getOTP() {
+  async getOTP() {
     this.presentAlert('OTP STATUS', "Please wait, OTP is being delivered to your electronic email! Stay with us!")
 
     let body = {
@@ -52,11 +52,12 @@ export class RegisterPage implements OnInit {
       this.status = res[Key]
       this.message = res[Key2]
       this.userId = keyTrial[Key4]
-      this.presentAlert('OTP STATUS', (this.status + ": " + this.message))
     }, error =>{
       console.log(error)
       this.presentAlert('Register Failed', 'Wrong information filled out')
     })
+    await new Promise(f => setTimeout(f, 2000));
+    this.presentAlert('OTP STATUS', (this.status + ": " + this.message))
     console.log("getOTP RAN")
     console.log(body)
   }
@@ -78,11 +79,11 @@ export class RegisterPage implements OnInit {
       const Key2 = 'message' as ObjectKey
       this.status = res[Key]
       this.message = res[Key2]
-      if (this.message == "VERIFIED") {
-        this.stats == true
+      if (this.status == "VERIFIED") {
+        this.stats = true
       }
       else {
-        this.stats == false
+        this.stats = false
       }
       this.presentAlert('OTP STATUS', (this.status + ": " + this.message))
     }, error =>{
@@ -108,17 +109,18 @@ export class RegisterPage implements OnInit {
       }
     }
     if (this.stats == true) {
-      this.http.post('https://formana.azurewebsites.net//api/formanaAuth/register', user)
+      this.http.post('https://formana.azurewebsites.net//api/formanaAuth/register2', user)
       .subscribe(res =>{
-        localStorage.setItem('user', JSON.stringify(res))
+        localStorage.setItem('user2', JSON.stringify(res))
         this.router.navigateByUrl('/login', {replaceUrl: true})
         console.log(res)
       }, error =>{
         console.log(error)
-        this.presentAlert('Register Failed', 'Wrong information filled out')
+        this.presentAlert('Register Failed', 'Account Info Error')
       })
     }
     else {
+      console.log(this.stats)
       this.presentAlert('Register Failed', 'Email not verified')
     }
 

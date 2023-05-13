@@ -2,27 +2,30 @@
 </ion-header>
 
 <ion-content>
-  <div class="login">
-    <div class="column left">
-        <img src="../../../assets/imgs/frmn logo 2.png"><br>
-        <div class="text">FORMANA</div>
-    </div>
-    <div class="column right">
-        <div class="rectangle">
-            <div class="text">
-                <p>Welcome Back!</p>
-            </div>
-            <div class="login_info">
-                <label for="email">Email</label><br>
-                <ion-input [(ngModel)]="email" type="text" placeholder="Enter your email address" id="email"></ion-input><br>
-                <label for="password">Password</label><br>
-                <ion-input [(ngModel)]="password" type="password" placeholder="Enter your password" id="password"></ion-input>
-            </div>
-            <a href="#" [routerLink]="['/register']">Don't have an account? Sign up here!</a>
-            <div class="submit">
-                <button type="submit" (click)="login()">LOG IN</button>
+    <div class="login-wrap">
+        <div class="login-html">
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
+            <div class="login-form">
+                <div class="sign-in-htm">
+                    <div class="group">
+                        <label for="user" class="label" style="color: #e9e9e9">Username</label>
+                        <ion-input [(ngModel)]="email" type="text" class="input" id="user"></ion-input>
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label" style="color: #e9e9e9">Password</label>
+                        <ion-input [(ngModel)]="password" type="password" class="input" id="password"></ion-input>
+                    </div>
+                    <div class="group">
+                        <input type="submit" class="button" value="Sign In" (click)="login()">
+                    </div>
+                    <div class="hr"></div>
+                    <div class="foot-lnk">
+                        <a href="#" [routerLink]="['/register']">Don't have an account? Register now!</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-  </div>
 </ion-content>
+

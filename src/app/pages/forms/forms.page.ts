@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
+import { IonModal } from '@ionic/angular';
+import { OverlayEventDetail } from '@ionic/core/components';
 
 @Component({
   selector: 'app-forms',
@@ -10,7 +12,9 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./forms.page.scss'],
 })
 export class FormsPage implements OnInit {
+  @ViewChild(IonModal) modal: IonModal;
 
+  message: string
   title: string
   wtitle: string
   TTitle: string
@@ -75,6 +79,25 @@ export class FormsPage implements OnInit {
     })
   }
 
+  cancel() {
+    this.modal.dismiss(null, 'cancel');
+  }
+
+  cancel2() {
+    this.modal.dismiss(null, 'cancel');
+  }
+
+  confirm() {
+    this.modal.dismiss(this.wtitle, 'confirm');
+  }
+
+  onWillDismiss(event: Event) {
+    const ev = event as CustomEvent<OverlayEventDetail<string>>;
+    if (ev.detail.role === 'confirm') {
+      this.message = `Hello, ${ev.detail.data}!`;
+    }
+  }
+
   onSubmit() {
     alert(this.myForm.value);
   }
@@ -116,7 +139,7 @@ export class FormsPage implements OnInit {
     }, error => {
        console.log(error)
     })
-    await new Promise(f => setTimeout(f, 1000));
+    await new Promise(f => setTimeout(f, 2000));
     if (this.nullz == null) {
       this.presentAlert("Can't find the form", 'Wrong information filled out')
     }
@@ -152,7 +175,7 @@ export class FormsPage implements OnInit {
     }, error => {
        console.log(error)
     })
-    await new Promise(f => setTimeout(f, 1000));
+    await new Promise(f => setTimeout(f, 2000));
     if (this.nullz == null) {
       this.presentAlert("Can't find the form", 'Wrong information filled out')
     }
@@ -188,7 +211,7 @@ export class FormsPage implements OnInit {
     }, error => {
        console.log(error)
     })
-    await new Promise(f => setTimeout(f, 1000));
+    await new Promise(f => setTimeout(f, 2000));
     if (this.nullz == null) {
       this.presentAlert("Can't find the form", 'Wrong information filled out')
     }
@@ -223,6 +246,7 @@ export class FormsPage implements OnInit {
     this.setQuestions4()
     console.log(this.data.questions2[0].comments[0].comment)
     this.building = 0
+    this.confirm()
 
     return this.building
   }
@@ -239,6 +263,7 @@ export class FormsPage implements OnInit {
     this.setQuestions4()
     console.log(this.data.questions2[0].comments[0].comment)
     this.building = 1
+    this.confirm()
 
     return this.building
   }
@@ -255,6 +280,7 @@ export class FormsPage implements OnInit {
     this.setQuestions4()
     console.log(this.data.questions2[0].comments[0].comment)
     this.building = 2
+    this.confirm()
 
     return this.building
   }
@@ -395,7 +421,7 @@ export class FormsPage implements OnInit {
         this.http.post('https://formana.azurewebsites.net/api/formanaAuth/answer', userData)
         .subscribe(res =>{
           localStorage.setItem('data', JSON.stringify(res))
-          this.router.navigateByUrl('/dashboard', {replaceUrl: true})
+          this.router.navigateByUrl('/home', {replaceUrl: true})
           console.log(res)
         }, error =>{
           console.log(error)
@@ -405,7 +431,7 @@ export class FormsPage implements OnInit {
         this.http.post('https://formana.azurewebsites.net/api/formanaAuth/answer2', userData)
         .subscribe(res =>{
           localStorage.setItem('data', JSON.stringify(res))
-          this.router.navigateByUrl('/dashboard', {replaceUrl: true})
+          this.router.navigateByUrl('/home', {replaceUrl: true})
           console.log(res)
         }, error =>{
           console.log(error)
@@ -415,7 +441,7 @@ export class FormsPage implements OnInit {
         this.http.post('https://formana.azurewebsites.net/api/formanaAuth/answer3', userData)
         .subscribe(res =>{
           localStorage.setItem('data', JSON.stringify(res))
-          this.router.navigateByUrl('/dashboard', {replaceUrl: true})
+          this.router.navigateByUrl('/home', {replaceUrl: true})
           console.log(res)
         }, error =>{
           console.log(error)

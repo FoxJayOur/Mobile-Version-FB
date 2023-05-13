@@ -15,21 +15,22 @@
   </nav>
   <div class="welcomeText">
     <div class="text">
-      Form
+      BatStateU - TNEU
     </div>
   </div>
+  <button id="open-modalOrig" type="button" style="background-color: rgb(202, 36, 36)
+    ; height: 60px; width: 65%; border-radius: 20px; margin: 20px; margin-left: 17%;">SELECT FORM</button>
   <div class="formCreate">
-    <button id="open-modalOrig" type="button" style="background-color: rgb(202, 36, 36)
-    ; height: 60px; width: 65%; border-radius: 20px; margin: 20px;">SELECT FORM</button>
-      <ion-modal trigger="open-modalOrig">
+      <ion-modal trigger="open-modalOrig" (willDismiss)="onWillDismiss($event)">
           <ng-template>
             <ion-content class="ion-padding">
-            <div class="titleLabel" style="background: rgb(214, 213, 213); padding: 18px; margin-bottom: 80px; border-radius: 10px; text-align: center;">
+            <div class="titleLabel" style="background: rgb(187, 187, 187); padding: 18px; margin-bottom: 80px; border-radius: 10px; text-align: center;">
               <ion-label style="font-size: 25px; font-family:'Poppins', sans-serif; color: black;">CHOOSE BUILDING DESIGNATION</ion-label>
+              <hr>
             </div>
             <button id="open-modal" type="button" style="background-color: rgb(202, 36, 36)
-              ; height: 60px; width: 93%; border-radius: 20px; margin: 20px;">CICS Building</button>
-              <ion-modal trigger="open-modal">
+              ; height: 60px; width: 93%; border-radius: 20px; margin: 20px; margin-left: 4%;">CICS Building</button>
+              <ion-modal trigger="open-modal"(willDismiss)="onWillDismiss($event)">
                 <ng-template>
                   <ion-content class="ion-padding">
                     <div class="titleLabel" style="background: rgb(214, 213, 213); padding: 18px; margin-bottom: 10px; border-radius: 10px; text-align: center;">
@@ -52,8 +53,8 @@
                 </ng-template>
               </ion-modal>
             <button id="open-modal2" type="button" style="background-color: rgb(202, 36, 36)
-              ; height: 60px; width: 93%; border-radius: 20px; margin: 20px;">CEAFA Building</button>
-              <ion-modal trigger="open-modal2">
+              ; height: 60px; width: 93%; border-radius: 20px; margin: 20px; margin-left: 4%;">CEAFA Building</button>
+              <ion-modal trigger="open-modal2"(willDismiss)="onWillDismiss($event)">
                 <ng-template>
                   <ion-content class="ion-padding">
                     <div class="titleLabel" style="background: rgb(214, 213, 213); padding: 18px; margin-bottom: 10px; border-radius: 10px; text-align: center;">
@@ -76,8 +77,8 @@
                 </ng-template>
               </ion-modal>
             <button id="open-modal3" type="button" style="background-color: rgb(202, 36, 36)
-              ; height: 60px; width: 93%; border-radius: 20px; margin: 20px;">Faculty</button>
-              <ion-modal trigger="open-modal3">
+              ; height: 60px; width: 93%; border-radius: 20px; margin: 20px; margin-left: 4%;">Faculty</button>
+              <ion-modal trigger="open-modal3" (willDismiss)="onWillDismiss($event)">
                 <ng-template>
                   <ion-content class="ion-padding">
                     <div class="titleLabel" style="background: rgb(214, 213, 213); padding: 18px; margin-bottom: 10px; border-radius: 10px; text-align: center;">
@@ -104,33 +105,33 @@
         </ion-modal>
     <form [formGroup]="myForm" (ngSubmit)="onSubmit()" #f="ngForm">
       <div class="form-group">
-        <label for="title" style="color: black;">Form Title <span> by </span></label><br>
+        <label for="title">Form Title <span> by </span></label><br>
         <input type="text"
               id="title"
               class="form-control"
               placeholder="Title"
               name="title"
               formControlName="title"
-              style="width: 40%;"
+              style="width: 80%;"
               required
               readonly>
       </div>
       <div class="form-group">
-        <label for="description" style="color: black;">Form Description</label>
-        <label for="" id="description" style="color: black; width: 85%;"></label>
+        <label for="description">Form Description</label>
+        <label for="" id="description" style="width: 85%; justify-content: center;"></label>
       </div>
       <div formArrayName="questions">
         <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let question of myForm.get('questions')['controls']; let i=index">
           <fieldset>
-            <legend><h4 style="color: black;">Question:
+            <legend><h4 style="color: black;">
             </h4></legend>
             <div [formGroupName]="i">
               <div class="form-inline">
                 <div class="form-group">
-                  <label id="questionLbl" style="margin-right:80px;" style="color: black;"class="col-form-label" for="question">Question</label>
+                  <label id="questionLbl" class="col-form-label" for="question">Question</label>
                   <ion-textarea type="text" formControlName="question"
                               class="form-control"
-                              style="margin-right:5px; width: 40%;" 
+                              style="margin-right:5px; width: 80%; background: rgba(255, 255, 255, 0.199);" 
                               type="email"
                               placeholder="Question"
                               id="question"
@@ -145,10 +146,10 @@
                     <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let lines of question.get('comments').controls; let j=index">
                       <div [formGroupName]="j">
                         <div class="form-group">
-                        <label id="commentLbl" style="color: black;" style="margin-right:5px;" class="col-form-label" for="emailId" style="color: black;">Answer {{j + 1}}</label><br>
+                        <label id="commentLbl" style="margin-right:5px;" class="col-form-label" for="emailId" style="color: black;">Answer</label><br>
                         <input type="text" formControlName="comment"
                               class="form-control"
-                              style="margin-right:5px; width: 40%;" 
+                              style="margin-right:5px; width: 80%;" 
                               type="email"
                               placeholder="Answers"
                               id="comment"
@@ -167,15 +168,15 @@
       <div formArrayName="questions2" id="questions2">
         <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let question of myForm.get('questions2')['controls']; let i=index">
           <fieldset>
-            <legend><h4 style="color: black;">Question:
+            <legend><h4 style="color: black;">
             </h4></legend>
             <div [formGroupName]="i">
               <div class="form-inline">
                 <div class="form-group">
-                  <label id="questionLbl" style="margin-right:80px;" style="color: black;"class="col-form-label" for="question">Question</label>
+                  <label id="questionLbl" class="col-form-label" for="question">Question</label>
                   <ion-textarea type="text" formControlName="question"
                               class="form-control"
-                              style="margin-right:5px; width: 40%;" 
+                              style="margin-right:5px; width: 80%; background: rgba(255, 255, 255, 0.199);" 
                               type="email"
                               placeholder="Question"
                               id="question2"
@@ -190,10 +191,10 @@
                     <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let lines of question.get('comments').controls; let j=index">
                       <div [formGroupName]="j">
                         <div class="form-group">
-                        <label id="commentLbl" style="color: black;" style="margin-right:5px;" class="col-form-label" for="emailId" style="color: black;">Option {{j + 1}}</label><br>
+                        <label id="commentLbl" style="margin-right:5px;" class="col-form-label" for="emailId">Option {{j + 1}}</label><br>
                         <input type="text" formControlName="comment"
                               class="form-control"
-                              style="margin-right:5px; width: 40%;" 
+                              style="margin-right:5px; width: 80%;" 
                               type="email"
                               placeholder="Answers"
                               id="comment"
@@ -207,10 +208,10 @@
                     <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let lines of question.get('comments2').controls; let j=index">
                       <div [formGroupName]="j">
                         <div class="form-group">
-                        <label style="color: black;" style="margin-right:5px;" class="col-form-label" for="emailId" style="color: black;">Answer {{j + 1}}</label><br>
+                        <label style="margin-right:5px;" class="col-form-label" for="emailId" >Answer {{j + 1}}</label><br>
                         <select formControlName="comment"
                               class="form-control"
-                              style="margin-right:5px; width: 40%;" 
+                              style="margin-right:5px; width: 80%;" 
                               type="text"
                               placeholder="Answers"
                               id="comment"
@@ -235,19 +236,19 @@
       <div formArrayName="questions3">
         <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let question of myForm.get('questions3')['controls']; let i=index">
           <fieldset>
-            <legend><h4 style="color: black;">Question:
+            <legend><h4 style="color: black;">
     </h4></legend>
             <div [formGroupName]="i">
               <div class="form-inline">
                 <div class="form-group">
-                  <label style="margin-right:80px;" style="color: black;"class="col-form-label" for="question">Question</label>
+                  <label class="col-form-label" for="question">Question</label>
                   <ion-textarea type="text"
                         class="form-control"
                         id="question3"
                         placeholder="Question"
                         name="type"
                         formControlName="question" 
-                        style="margin-right:5px; width: 40%;" 
+                        style="margin-right:5px; width: 80%; background: rgba(255, 255, 255, 0.199);" 
                         required
                         readonly>
                       </ion-textarea>
@@ -259,10 +260,10 @@
                     <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let lines of question.get('comments').controls; let j=index">
                       <div [formGroupName]="j">
                         <div class="form-group">
-                        <label style="color: black;" style="margin-right:5px;" class="col-form-label" for="emailId" style="color: black;">Answer {{j + 1}}</label><br>
+                        <label style="margin-right:5px;" class="col-form-label" for="emailId" >Answer</label><br>
                         <ion-textarea formControlName="comment"
                               class="form-control"
-                              style="margin-right:5px; width: 40%;" 
+                              style="margin-right:5px; width: 80%;" 
                               type="textarea"
                               placeholder="Answers"
                               id="textarea"
@@ -281,13 +282,16 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="title" style="color: black;">Approved by: </label> <br>
-        <label for="" id="approvedBy" style="color: black; width: 70%;"></label>
+        <label for="title">Approved by: </label> <br>
+        <label for="" id="approvedBy" style="color:#e9e9e9; width: 70%;"></label>
       </div>
 
       
       <!--<button type="submit" class="btn btn-success" (click)="continue()">Update</button>-->
-      <button type="submit" class="btn btn-success" (click)="pass()">Submit</button>
+      <button type="submit" (click)="pass()" style="background-color: rgb(202, 36, 36)
+      ; height: 37px; width: 32%; border-radius: 18px; margin: 5px; font-size: 15px;" onclick="window.location.reload()">Submit</button>
+      <button type="submit" style="background-color: rgb(202, 36, 36)
+      ; height: 37px; width: 32%; border-radius: 18px; margin: 5px; font-size: 15px;" onclick="window.location.reload()">Refresh</button>
     </form>
   </div>
 </ion-content>
