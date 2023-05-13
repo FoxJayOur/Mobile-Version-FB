@@ -17,7 +17,7 @@
         <label for="password"><b>Password</b></label>
         <ion-input [(ngModel)]="password" type="password" placeholder="Enter Password" id="password" required></ion-input>
     
-        <label for="srcode"><b>SR-CODE</b></label>
+        <label for="srcode"><b>SR-CODE</b>   (Please enter SR-CODE without the dash!)</label>
         <ion-input [(ngModel)]="srcode" type="text" placeholder="Enter SR-code" id="srcode" required></ion-input>
 
         <label for="department"><b>Department</b></label>
@@ -33,7 +33,7 @@
 
         <button type="submit" class="registerbtn" (click)="register()">Register</button>
     </div>
-    
+
     <div class="container signin">
         <p>Already have an account? <a href="#" [routerLink]="['/login']">Sign in</a>.</p>
     </div>
