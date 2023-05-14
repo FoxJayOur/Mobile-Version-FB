@@ -10,6 +10,31 @@ ion-content{
   padding: 0;
   box-sizing: border-box;
 }
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    color: white;
+  }
+  th {
+    font-size: 10px;
+  }
+  td {
+    background-color: transparent;
+    font-size: 7px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: transparent;
+    font-size: 7px;
+    color: white;
+  }
 .formCreate{
 	width:90%;
     margin-left: 5%;

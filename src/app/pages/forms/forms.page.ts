@@ -28,6 +28,7 @@ export class FormsPage implements OnInit {
   bodyT: JSON
   description: String
   approvedBy: String
+  data1: any
 
   data = {
     questions: [
@@ -68,6 +69,15 @@ export class FormsPage implements OnInit {
   }
 
   myForm: FormGroup;
+  temptitleObj: any[]
+  temptitleObj2: any[]
+  temptitleObj3: any[]
+  title1: string[] = []
+  title2: string [] = []
+  title3: string [] = []
+  expiryDate1: string [] = []
+  expiryDate2: string [] = []
+  expiryDate3: string [] = []
 
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router, private alertController: AlertController) {
     this.myForm = this.fb.group({
@@ -79,34 +89,74 @@ export class FormsPage implements OnInit {
     })
   }
 
-  cancel() {
-    this.modal.dismiss(null, 'cancel');
-  }
-
-  cancel2() {
-    this.modal.dismiss(null, 'cancel');
-  }
-
-  confirm() {
-    this.modal.dismiss(this.wtitle, 'confirm');
-  }
-
-  onWillDismiss(event: Event) {
-    const ev = event as CustomEvent<OverlayEventDetail<string>>;
-    if (ev.detail.role === 'confirm') {
-      this.message = `Hello, ${ev.detail.data}!`;
-    }
-  }
-
   onSubmit() {
     alert(this.myForm.value);
   }
 
   viewForms() {
-    this.http.get('https://formana.azurewebsites.net/api/formanaAuth/ListOfForms')
+    this.http.get('https://formana.azurewebsites.net//api/formanaAuth/viewAll')
     .subscribe(req =>{
       localStorage.getItem('data')
       console.log(req)
+      this.data1 = JSON.stringify(req)
+      type ObjectKey = keyof typeof this.data1;
+      const Key = 'formDataAll' as ObjectKey
+      this.temptitleObj = req[Key]
+      const Key1 = 'formData2All' as ObjectKey
+      this.temptitleObj2 = req[Key1]
+      const Key2 = 'formData3All' as ObjectKey
+      this.temptitleObj3 = req[Key2]
+      for (let i = 0; i < Object.keys(this.temptitleObj).length; i++) {
+        console.log("Error")
+        if (this.temptitleObj[i].title == null) {
+          this.title1[i] = "Null"
+        }
+        else {
+          this.title1[i] = this.temptitleObj[i].title
+        }
+        if (this.temptitleObj[i].expiryDate == null) {
+          this.expiryDate1[i] = "Null"
+        }
+        else{
+          this.expiryDate1[i] = this.temptitleObj[i].expiryDate
+          console.log(this.title1[i])
+        }
+      }
+      for (let i = 0; i < Object.keys(this.temptitleObj2).length; i++) {
+        console.log("Error")
+        if (this.temptitleObj2[i].title == null) {
+          this.title2[i] = "Null"
+        }
+        else {
+          this.title2[i] = this.temptitleObj2[i].title
+        }
+        if (this.temptitleObj2[i].expiryDate == null) {
+          this.expiryDate2[i] = "Null"
+        }
+        else{
+          
+          this.expiryDate2[i] = this.temptitleObj2[i].expiryDate
+          console.log(this.title2[i])
+        }
+      }
+      for (let i = 0; i < Object.keys(this.temptitleObj3).length; i++) {
+        console.log("Error")
+        if (this.temptitleObj3[i].title == null) {
+          this.title3[i] = "Null"
+        }
+        else {
+          this.title3[i] = this.temptitleObj3[i].title
+        }
+        if (this.temptitleObj3[i].title == null) {
+          this.expiryDate3[i] = "Null"
+        }
+        else{
+          this.expiryDate3[i] = this.temptitleObj3[i].expiryDate
+          console.log(this.title3[i])
+        }
+      }
+      console.log(Object.keys(this.temptitleObj).length)
+      console.log(this.temptitleObj[0].name)
     }, error =>{
        console.log(error)
     })
@@ -136,6 +186,7 @@ export class FormsPage implements OnInit {
       console.log(this.description)
       console.log(this.expiryDate)
       console.log(this.data.questions[0].question)
+      this.presentAlert("FORM STATUS:", 'Form Found')
     }, error => {
        console.log(error)
     })
@@ -172,6 +223,7 @@ export class FormsPage implements OnInit {
       console.log(this.description)
       console.log(this.expiryDate)
       console.log(this.data.questions[0].question)
+      this.presentAlert("FORM STATUS:", 'Form Found')
     }, error => {
        console.log(error)
     })
@@ -208,6 +260,7 @@ export class FormsPage implements OnInit {
       console.log(this.description)
       console.log(this.expiryDate)
       console.log(this.data.questions[0].question)
+      this.presentAlert("FORM STATUS:", 'Form Found')
     }, error => {
        console.log(error)
     })
@@ -234,7 +287,6 @@ export class FormsPage implements OnInit {
     return this.title
   }
   myGeeks() {
-    this.findTitle();
     (<HTMLInputElement>document.getElementById('title')).value
         = this.TTitle;
     document.getElementById('description').innerHTML
@@ -246,12 +298,11 @@ export class FormsPage implements OnInit {
     this.setQuestions4()
     console.log(this.data.questions2[0].comments[0].comment)
     this.building = 0
-    this.confirm()
+    this.presentAlert("FORM STATUS:", 'Proceed to answering the form by pressing back button')
 
     return this.building
   }
   myGeeks2() {
-    this.findTitle2();
     (<HTMLInputElement>document.getElementById('title')).value
         = this.TTitle;
     document.getElementById('description').innerHTML
@@ -263,12 +314,11 @@ export class FormsPage implements OnInit {
     this.setQuestions4()
     console.log(this.data.questions2[0].comments[0].comment)
     this.building = 1
-    this.confirm()
+    this.presentAlert("FORM STATUS:", 'Proceed to answering the form by pressing back button')
 
     return this.building
   }
   myGeeks3() {
-    this.findTitle3();
     (<HTMLInputElement>document.getElementById('title')).value
         = this.TTitle;
     document.getElementById('description').innerHTML
@@ -280,7 +330,7 @@ export class FormsPage implements OnInit {
     this.setQuestions4()
     console.log(this.data.questions2[0].comments[0].comment)
     this.building = 2
-    this.confirm()
+    this.presentAlert("FORM STATUS:", 'Proceed to answering the form by pressing back button')
 
     return this.building
   }

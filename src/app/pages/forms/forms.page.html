@@ -19,9 +19,29 @@
     </div>
   </div>
   <button id="open-modalOrig" type="button" style="background-color: rgb(202, 36, 36)
-    ; height: 60px; width: 65%; border-radius: 20px; margin: 20px; margin-left: 17%;">SELECT FORM</button>
+    ; height: 60px; width: 65%; border-radius: 20px; margin: 20px; margin-left: 17%; margin-bottom: 2px;">SELECT FORM</button>
+  <button id="hehe-modal" type="button" style="background-color: rgb(202, 36, 36)
+    ; height: 25px; width: 50%; border-radius: 15px; margin: 10px; margin-left: 25%; font-size: 10px;" (click)="viewForms()">VIEW FORMS</button>
+  <ion-modal trigger="hehe-modal">
+    <ng-template>
+      <ion-content class="ion-padding">
+        <table>
+          <tr>
+            <th>CICS</th>
+            <th>CEAFA</th>
+            <th>FACULTY</th>
+          </tr>
+          <tr *ngFor="let lines of temptitleObj; let z=index">
+            <td>{{title1[z]}}<br><br>{{expiryDate1[z]}}</td>
+            <td>{{title2[z]}}<br><br>{{expiryDate2[z]}}</td>
+            <td>{{title3[z]}}<br><br>{{expiryDate3[z]}}</td>
+          </tr>
+        </table>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
   <div class="formCreate">
-      <ion-modal trigger="open-modalOrig" (willDismiss)="onWillDismiss($event)">
+      <ion-modal trigger="open-modalOrig">
           <ng-template>
             <ion-content class="ion-padding">
             <div class="titleLabel" style="background: rgb(187, 187, 187); padding: 18px; margin-bottom: 80px; border-radius: 10px; text-align: center;">
@@ -30,7 +50,7 @@
             </div>
             <button id="open-modal" type="button" style="background-color: rgb(202, 36, 36)
               ; height: 60px; width: 93%; border-radius: 20px; margin: 20px; margin-left: 4%;">CICS Building</button>
-              <ion-modal trigger="open-modal"(willDismiss)="onWillDismiss($event)">
+              <ion-modal trigger="open-modal">
                 <ng-template>
                   <ion-content class="ion-padding">
                     <div class="titleLabel" style="background: rgb(214, 213, 213); padding: 18px; margin-bottom: 10px; border-radius: 10px; text-align: center;">
@@ -46,7 +66,7 @@
                     </div>
                     <div class="ion-activatable ripple-parent rectangle" style="border: none;">
                       <button type="button" (click)="myGeeks()" style="background-color: rgb(202, 36, 36);
-                      border-radius: 35px; width: 100%; height: 47px; margin-top: 25px;">
+                      border-radius: 35px; width: 100%; height: 47px; margin-top: 25px;" [routerLink]="['/forms']">
                       Answer<ion-ripple-effect></ion-ripple-effect></button>
                     </div>
                   </ion-content>
@@ -54,7 +74,7 @@
               </ion-modal>
             <button id="open-modal2" type="button" style="background-color: rgb(202, 36, 36)
               ; height: 60px; width: 93%; border-radius: 20px; margin: 20px; margin-left: 4%;">CEAFA Building</button>
-              <ion-modal trigger="open-modal2"(willDismiss)="onWillDismiss($event)">
+              <ion-modal trigger="open-modal2">
                 <ng-template>
                   <ion-content class="ion-padding">
                     <div class="titleLabel" style="background: rgb(214, 213, 213); padding: 18px; margin-bottom: 10px; border-radius: 10px; text-align: center;">
@@ -70,7 +90,7 @@
                     </div>
                     <div class="ion-activatable ripple-parent rectangle" style="border: none;">
                       <button type="button" (click)="myGeeks2()" style="background-color: rgb(202, 36, 36);
-                      border-radius: 35px; width: 100%; height: 47px; margin-top: 25px;">
+                      border-radius: 35px; width: 100%; height: 47px; margin-top: 25px;" [routerLink]="['/forms']">
                       Answer<ion-ripple-effect></ion-ripple-effect></button>
                     </div>
                   </ion-content>
@@ -78,7 +98,7 @@
               </ion-modal>
             <button id="open-modal3" type="button" style="background-color: rgb(202, 36, 36)
               ; height: 60px; width: 93%; border-radius: 20px; margin: 20px; margin-left: 4%;">Faculty</button>
-              <ion-modal trigger="open-modal3" (willDismiss)="onWillDismiss($event)">
+              <ion-modal trigger="open-modal3">
                 <ng-template>
                   <ion-content class="ion-padding">
                     <div class="titleLabel" style="background: rgb(214, 213, 213); padding: 18px; margin-bottom: 10px; border-radius: 10px; text-align: center;">
@@ -94,7 +114,7 @@
                     </div>
                     <div class="ion-activatable ripple-parent rectangle" style="border: none;">
                       <button type="button" (click)="myGeeks3()" style="background-color: rgb(202, 36, 36);
-                      border-radius: 35px; width: 100%; height: 47px; margin-top: 25px;">
+                      border-radius: 35px; width: 100%; height: 47px; margin-top: 25px;" [routerLink]="['/forms']">
                       Answer<ion-ripple-effect></ion-ripple-effect></button>
                     </div>
                   </ion-content>
@@ -146,7 +166,7 @@
                     <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let lines of question.get('comments').controls; let j=index">
                       <div [formGroupName]="j">
                         <div class="form-group">
-                        <label id="commentLbl" style="margin-right:5px;" class="col-form-label" for="emailId" style="color: black;">Answer</label><br>
+                        <label id="commentLbl" style="margin-right:5px;" class="col-form-label" for="emailId">Answer</label><br>
                         <input type="text" formControlName="comment"
                               class="form-control"
                               style="margin-right:5px; width: 80%;" 
